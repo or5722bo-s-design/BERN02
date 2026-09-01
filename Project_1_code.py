@@ -32,6 +32,7 @@ def WLSR(y, x, k, x_0):
     x = sm.add_constant(x)
 
     # fitting the weighted least squares regression model
+    # i hope it is okay to use the wls function
     model = sm.WLS(y, x, weights=D)
     results = model.fit()
 
