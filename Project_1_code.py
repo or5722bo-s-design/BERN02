@@ -47,6 +47,20 @@ def WLSR(y, x, k, x_0):
 
     return pred, se
 
+#Mathematical note:
+'''The sm.WLS or weighted least squares functions works as follows: Using our weights (matrix D), we can find the k nearest 
+neighbours to our observation, which the model will be basing its prediction on. Then within the function the variance-covariance
+matrix of beta is calculated as Var(beta) = sigma^2*(X^T@D@X)^-1, where X is a n by 2 matrix where the first column is 1 for
+the intercept and the second column is the beta_1 values, sigma^2 is the weighted residual variance. Then the response at point 
+x_0 is y_0 = x^T_0*beta, then we can calculate the var(y_0) by combining the formulas for var(y_0) and var_(beta), giving us the
+formula that WLS uses to calculate the standard error.'''
+
+#Programming note:
+'''When calling the function pred_info = results.get_prediction(int_pred), it returns a multitude of values, like the
+predicted mean of the expected value, the se of the mean prediction, the se of an individual observation, CI upper and 
+lower bounds etc. We want to extract the se of the mean and the predicted mean of the expected value. These are both 
+stored as an array, so to get a float variable, we specify that we want the 1st or 0th element saved for later.'''
+
 # reading in the data
 cleandata = pd.read_csv("Data/pollution_cleaneddata.csv")
 
