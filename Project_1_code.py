@@ -82,3 +82,11 @@ df_out = pd.DataFrame({"POOR (%)": percent, "Predicted MORT": pred, "SE": se})
 
 print(df_out)
 
+'''Results: 
+   POOR (%)  Predicted MORT         SE
+0        10      900.607323   8.091129
+1        18      956.767778   6.747982
+2        25     1010.030441  10.567187
+'''
+
+
